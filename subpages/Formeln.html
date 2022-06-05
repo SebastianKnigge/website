@@ -1,0 +1,114 @@
+<html>
+<head>
+<script language="JavaScript">
+function Zurueck()
+{
+window.document.write(" <br> <br><a href=Formeln.html>Zur&uuml;ck</a> zu Formeln");
+}
+
+function Anntilgung()
+{
+	var a, i, T, t, Nom, e, z;
+	e = 1;
+	i = Number(prompt("Gib hier den Zinssatz ein. (In Prozent ohne Angabe des %-Zeichens)"));
+	i = i/100;
+	if(i!==0)
+	{
+		T = Number(prompt("Gib hier die Tilgungszeit ein. (Anzahl der Zinsperioden)"));
+		if(T!==0)
+		{
+			Nom = Number(prompt("Gib hier die Nominale ein. (In Euro ohne Angabe des Euro-Zeichens)"));
+			if(Nom!==0)
+			{
+				a = Nom*(i* Math.pow(1+i,T))/(Math.pow(1+i,T)-1);
+	
+				window.document.write("Nominale: "+ Nom + "<br>Zinssatz: "+ (i*100) +"%<br>Annuit&auml;t: "+ (Math.round(a*1000)/1000));
+				window.document.write("<table border=1><tr><th>Periode</th><th>Gesamtzahlung</th><th>Tilgung</th><th>Zinsen</th><th>Nominale zu <br>Periodenende</th>");
+	
+				for(e=1;e<=T;e++)
+				{
+					z = Nom*i;
+					t = a-z;
+					Nom = Nom-t;
+					window.document.write("<tr><td>"+ e +"</td><td>"+ (Math.round(a*100)/100) +"</td><td>"+ (Math.round(t*100)/100) +"</td><td>"+ (Math.round(z*100)/100) +"</td><td>"+ (Math.round(Nom*100)/100) +"</td>");
+				}
+				window.document.write("</tr></table>");
+				Zurueck();
+	}	}	}	
+}
+
+function Anntilgung2()
+{
+	var a, d, Ann, Nom, Z, Y, i, T, x, A;
+
+	Nom = Number(prompt("Gib das Nominale ein (in Euro)"));
+	T = Number(prompt("Gib hier die Anzahl der Rueckzahlungsperioden an"));
+	i = Number(prompt("Gib den Zinssatz ein (in %)"));
+	a = Number(prompt("Gib das Rueckzahlungsagio an (in % vom Nominale)"));
+	d = Number(prompt("Gib das Auszahlungsdisagio (=Damnum) an (in % vom Nominale)"));
+ 
+	i = i/100;
+	a = a/100;
+	d = d/100;
+	Ann = (Nom*((i* Math.pow(1+i,T))/(Math.pow(1+i,T)-1))+((Nom*a)/T));
+	A = (Nom*a)/T;
+	window.document.write("Nominale: " + Nom);
+	window.document.write("<br>Zinssatz: "+ (i*100) +"%");
+	window.document.write("<br><b>Auszahlungsbetrag: " + (Nom*(1-d)) +"</b>");
+	window.document.write("<br>Annuit&auml;t: "+ (Math.round(Ann*1000)/1000) +"<br>");
+
+	window.document.write("<Table border=1><tr><th>Periode</th><th>R&uuml;ckzahlung</th><th>Zinsen</th><th>Tilgung</th><th>Agio</th><th>Nominale</th></tr>");
+
+	for(x=1;x<=T;x++)
+	{
+		Z = Nom*i;
+	
+		Y = Ann-A-Z;
+		Nom = Nom-Y;
+	
+		window.document.write("<tr><td>"+ x +"</td>");
+		window.document.write("<td>"+ (Math.round(Ann*100)/100) +"</td>");
+		window.document.write("<td>"+ (Math.round(Z*100)/100) +"</td>");
+		window.document.write("<td>"+ (Math.round(Y*100)/100) +"</td>");
+		window.document.write("<td>"+ A +"</td>");
+		window.document.write("<td>"+ (Math.round(Nom*100)/100) +"</th>");
+	
+	}
+
+	window.document.write("</table>");
+	Zurueck();
+}
+
+
+
+function Kreis2()
+{
+	var A, r, U;
+	if(r!==0)
+	{
+		A = Math.pow(r,2)*Math.PI;
+		U = 2*Math.PI*r;
+		window.document.write("Fl&auml;cheninhalt: "+ (Math.round(A*100)/(100)) +"<br>");
+		window.document.write("Umfang: "+ (Math.round(U*100)/100));
+		Zurueck();
+	}
+	else{
+	alert("Gib einen Radius ein!");
+	Kreis();}
+	if(r<0)
+	{alert("Wie schaut denn ein Negativer Radius aus? Gib einen Radius ein!");
+	Kreis();}
+}
+
+</script>
+</head>
+<body>
+	<table>
+		<tr><td>Annuit&auml;tentilgung bei gegebenen Tilgungsjahren.</td><td><a href="Javascript: Anntilgung();"><button>zur Formel</button></a></td>
+		<tr><td>Annuit&auml;tentilgung bei gegebenen Tilgungsjahren mit Agio und Disagio.</td><td><a href="Javascript: Anntilgung2();"><button>zur Formel</button></a></td>
+
+	</table>
+	
+	
+</body>
+</html>
