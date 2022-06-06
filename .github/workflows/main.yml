@@ -2,7 +2,7 @@ name: CI
 on: 
   push:
     branches:
-      - main #here we choose to deploy only when a push is detected on the main branch
+      - main #deplois only when a push is detected on the main branch
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +22,7 @@ jobs:
     - name: Deploy static site to S3 bucket
       run: aws s3 sync ./sebastian-knigge.eu/ s3://sebastian-knigge.eu --delete --acl public-read
       # --delete flag will remove any file in the s3 that are not on the "thefoldertodeploy" folder
+      # --acl public-read makes files public
 
     - name: Invalidate cloudfront distribution
       run: aws cloudfront create-invalidation --distribution-id E14XKNUUIRPNBX --paths "/*"
