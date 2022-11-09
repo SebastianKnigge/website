@@ -10,7 +10,7 @@ My homepages content is custom HTML code in the following directory: [sebastian-
 └── sebastian-knigge.eu.... HTML code  
     ├── img................ Images  
     └── subpages........... All pages except index.html  
-        └── Articles....... Directory containing article subpages  
+        └── articles....... Directory containing article subpages  
             └── Figures.... Figures used in articles (jpg, png, pdf)
 ```
 
