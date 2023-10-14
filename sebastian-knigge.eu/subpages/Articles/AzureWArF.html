@@ -1,0 +1,322 @@
+<html>
+	<head>
+		<title>S.Knigge</title>
+		<style type="text/css">
+		body { margin-left:10%; }
+		p,div,table,ul,ol { margin-left:30px; }
+		</style>
+
+	</head>
+	<body topmargin="30">
+		
+		
+		<p style="color:grey" >
+			19th of April 2022
+		</p> 
+		
+		<br>
+		
+		<img src="./Figures/headers/AzureWArF_header.jpeg" alt="Flex" style="width:100%;">
+		
+		<h1>
+			<b>
+				Azure Well Architected Framework for ML and Data Science?
+			</b>
+		</h1>
+		
+		<p>
+			1. What is Well Architected Framework (WArF) and how to learn about it? <br>
+			2. The 5 pillars of the Well Architected Framework  <br>
+			3. Azure Well Architected Review <br>
+			4. Comparison to Cloud Adoption Framework (CAF)  <br>
+			5. Other Cloud Providers Frameworks <br>
+		</p>
+
+
+		<h2>
+			<b>
+				1. What is Well Architected Framework (WArF) and how to learn about it?
+			</b>
+		</h2> 
+
+		<p>
+			Microsoft introduced the Azure Well Architected Framework in a blog post in July 2020 
+			(<a href="https://azure.microsoft.com/en-us/blog/introducing-the-microsoft-azure-wellarchitected-framework/" target ="_blank">
+			https://azure.microsoft.com/en-us/blog/introducing-the-microsoft-azure-wellarchitected-framework/</a>) 
+			to "help you build and deliver great solutions" according to industry best-practices. However, one 
+			could also view this as Microsoft's method to harmonize cloud solutions as much as possible or a way 
+			to push Azure's native services. Be said, the framework is something not just solution architects 
+			developing cloud solutions on Azure should know about, but also data engineers or data scientists may 
+			want to take a look at.
+		</p>
+		
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_1.jpg" style="width:90%;"><br>
+			<i style="color:grey;"> Figure 1: Resources. Links: 
+				<a href="https://docs.microsoft.com/en-us/azure/architecture/framework/" target="_blank">
+					https://docs.microsoft.com/en-us/azure/architecture/framework/
+				</a>
+			</i>
+		</p>
+
+		<h3>
+			Material from Microsoft:
+		</h3>
+			
+		<p>
+			Besides all the people creating second level content about the Well Architected Framework (WArF), 
+			there are essentially 3 sources of primary information to familiarize with the framework.<br>
+			<ul>
+				<li> 
+					Nr. 1 is the 737 page-heavy <b>PDF documentation of Microsoft</b>, which can be downloaded. 
+					Personally, I find it rather inconvenient and boring to go through 700 pages of concepts, 
+					so I did not study it very deeply. </li>
+				<li> 
+					Nr. 2 is the Microsoft docs website (
+					<a href="https://docs.microsoft.com/en-us/azure/architecture/framework/" target="_blank">
+						https://docs.microsoft.com/en-us/azure/architecture/framework/
+					</a>
+					) with a bunch of videos, that make it more entertaining to digest the content. The navigation is 
+					significantly more convenient, and the content can be displayed better in the browser. </li>
+				<li>
+					And Nr. 3 the <b>Well Architected Review</b> finally is a tool that is not primarily intended to inform, 
+					but still helps to engage with the subject. 
+				</li>
+			</ul>
+		</p>
+		
+		<h2>
+			<b>
+				2. The 5 pillars of the Well Architected Framework
+			</b>
+		</h2>
+
+		<h3>
+			Mnemonic for WArF:
+		</h3>
+
+		<p>
+			The guidelines and best practices are structured in 5 logical units called pillars. At first, the 5 items (Reliability, 
+			Cost Optimization, Operational Excellence, Performance efficiency and Security) seemed like buzzwords in a list, 
+			but as I became more familiar with them, I started delineating the points more clearly from each other. It helps 
+			to build a mnemonic to remember the 5 pillars. When I think of the WArF, I think of robot cops, or <b>R-COPS</b>. After 
+			reciting it a few times, you will never forget any of the 5 pillars.
+		</p>
+
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_2.jpg" style="width:95%;">
+			<br>
+			<i style="color:grey;"> 
+				Figure 2: Five Pillars of WArF ... remember R-COPS. Image by The Times.co.uk (
+				https://www.thetimes.co.uk/article/robocop-car-that-could-catch-crooks-all-by-itself-l95frwb7z
+				)
+			</i>
+		</p>
+
+		<h3>
+			The five pillars of WArF:
+		</h3>
+
+		<p>
+			The following is a very brief summary of the 5 pillars. If you are looking for detailed information 
+			concerning the best practices, the Microsoft website is certainly the better place to go.
+
+			<ol>
+				<li>
+					Reliability is about designing a solution that can recover from failures (disaster recovery) 
+					and continue to function in case of a failure (resiliency). 
+				</li>
+				<li>
+					Cost optimization ensures a high business value for the monthly cloud bill.
+				</li>
+				<li>
+					Operational excellence is essentially all about DevOps and CI/CD - In machine 
+					learning potentially MLOPs.
+				</li>
+				<li>
+					Performance efficiency is about scaling the solution with the workload.
+				</li>
+				<li>
+					And Security contains best practices to prevent from attacks and data leakage.
+				</li>
+			</ol>
+		</p>
+
+		<h3>
+			Importance for Data Science and ML:
+		</h3>
+
+		<p>
+			It helps to know the pillars by heart, and there is nothing wrong with taking a look at all best practices, 
+			although I suspect not every pillar or concept within the WArF is equally important when it comes to data 
+			science. <b>Security</b> and <b>cost optimization</b> should be addressed in every cloud architecture, no 
+			matter if we are talking about a ML workload or a conventional user app with deterministic functionality. 
+			<b>Operational excellence</b>, in professional machine learning solutions, must be considered in the design of such. DevOps is 
+			an integral element of your production solution and MLOps an extension of it, addressing changing data and/or 
+			performance of a model. As far as <b>reliability</b> and <b>performance efficiency</b> are concerned, requirements regarding 
+			these features are to be agreed with the customer (internal or external) and the end users, respectively.	
+		</p>
+
+		<h2>
+			<b>
+				3. Azure Well Architected Review
+			</b>
+		</h2>
+
+		<h3>
+			Well Architected Review:
+		</h3>
+
+		<p>
+			The Well Architected Review (WArR) is a tool to check the proper application of concepts from WArF. Microsoft provides with 
+			the WArR a methodology to evaluate a solution architecture or a delivered solution against the 5 pillars of the WArF. I 
+			suppose it is advisable to do the first review as soon as the solution is designed according to the customer's requirements 
+			but is not yet implemented. This helps possibly introduce adjustments resulting from the evaluation of the WArR. 
+		</p>
+
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_3.jpg" style="width:95%;">
+			<br>
+			<i style="color:grey;"> 
+				Figure 2: WArR Context and Usage. Links: <a href="docs.microsoft.com" target="_blank">docs.microsoft.com</a>
+			</i>
+		</p>
+
+		<h3>
+			Azure Advisor:
+		</h3>
+
+		<p>
+			Besides WArR there is another tool called Azure Advisor, which is built in the Azure Platform and gives recommendations 
+			after implementation. Recommendations can be aggregated across several subscriptions if you want to use subscriptions 
+			to separate development and production environments for example. While the Well Architected Review can be used prior 
+			to implementation, Azure Advisor is rather a post-deployment checklist.
+		</p>
+
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_Advisor.png" >
+			<br>
+			<i style="color:grey;"> 
+				Screenshot 1: Screenshot of Azure Advisor in the Azure portal
+			</i>
+		</p>
+
+		<h3>
+			Best usage of WArR:
+		</h3>
+
+		<p>
+			While the tool may seem self-explanatory at first glance, I want to share some of the lessons I've learned to get the greatest 
+			benefit from using it. 
+
+			<ul>
+			<li>
+				On <a href="docs.microsoft.com" target="_blank">docs.microsoft.com</a> you could potentially do the review without being logged in. However, I would recommend to login with 
+				credentials you remember (potentially company email address) to save your status and view the review at a later point in the 
+				browser. 
+			</li>
+			<li>
+				When starting the review, you are asked to name it. I would recommend coming up with a speaking naming convention, considering the start date 
+				as you might do the review again at a later point when things have changed (e.g., Partner: &lt;Partner Name &gt;| Customer: &lt;Customer Name &gt; | Use Case: 
+				&lt;UC Name &gt; | Started: &lt;YYYY-MM-DD &gt;). 
+			</li>
+			<li>
+				In the reviews second step select only the pillars that are relevant. In mixed settings, this will help to define in advance of implementation which parts 
+				of the solution you oversee and which you don't. 
+			</li>
+			<li>
+				When we are talking data science solutions choose the review type Azure Machine Learning (even if it is in preview currently). 
+			</li>
+			<li>
+				While filling in the question make sure to reference to the answers in the optional comment section below each question. 
+			</li>
+			<li>
+				Export the reviews results once done, to preserve it in your repository. The graphical user interface to review the results 
+				however is more convenient in the browser. 
+			</li>
+			<li>
+				The results section "Next steps" lists the most important results you should review first. 
+			</li>
+			<li>
+				Lastly for each pillar evaluated in the review you will have individual recommendations you should review and report to your customer. 
+			</li>
+			</ul>
+		</p>
+
+		<h2>
+			<b>
+				4. Comparison to Cloud Adoption Framework (CAF)
+			</b>
+		</h2>
+
+		<h3>
+			Cloud Adoption Framwork:
+		</h3>
+
+		<p>
+			Besides the Well Architected Framework, there is yet a second common framework within the Azure universe. One should not confuse the 
+			WArF with the <a href="https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/resources/tools-templates" target="_blank">Cloud Adoption Framework 
+			(CAF)</a>. At first glance, there is some overlap. While the CAF addresses the adoption of Azure Cloud for an enterprise as a whole, the 
+			WArF is a framework that is relevant for each individual application or solution in the cloud. The CAF is slightly more fundamental, the 
+			WArF is used repeatedly in the life cycle of a given application in the Azure cloud. Both frameworks can be used in parallel or consecutively, 
+			but they are definitely not mutually exclusive rather they complement each other.
+		</p>
+
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_4.jpg" style="width:95%;">
+			<br>
+			<i style="color:grey;"> 
+				Figure 4: Cloud Adoption Framework (CAF). Links: 
+				<br>
+				<a href="https://www.youtube.com/watch?v=d6usiB4MKq8" target="_blank">
+					https://www.youtube.com/watch?v=d6usiB4MKq8
+				</a>
+				<br>
+				<a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/resources/tools-templates" target="_blank">
+					https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/resources/tools-templates
+				</a>
+				  
+			</i>
+		</p>
+
+		<h2>
+			<b>
+				Other Cloud Providers Frameworks
+			</b>
+		</h2>
+		
+		<h3>
+			AWS and Google frameworks:
+		</h3>
+
+		<p>
+			Besides Microsoft, many other cloud providers have published frameworks that provide best practices 
+			for implementing solutions on their cloud technology. Amazon in fact has a document which has the same name 
+			("<b>AWS Well-Architected Framework</b>"") and Google provides the "<b>Google Cloud-Architecture-Framework</b>". 
+			The pillars of these frameworks do not change in the case of AWS and in the case of Google there is one section 
+			called "System Design" in addition to the five R-COPS pillars. The principles therefore are unlikely to differ 
+			substantially, and as a developer or solution architect you should be familiar with the other frameworks relatively 
+			quickly once you have mastered WArF for Azure.
+		</p>
+
+		<p style="text-align:center;">
+			<img src="./Figures/AzureWArF_5.jpg" style="width:95%;">
+			<br>
+			<i style="color:grey;"> 
+				Figure 5: Other Cloud Providers Frameworks. Links:
+				<br>
+				<a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html" target="_blank">
+					https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+				</a>
+				<br>
+				<a href="https://cloud.google.com/architecture/framework" target="_blank">
+					https://cloud.google.com/architecture/framework
+				</a>
+				  
+			</i>
+		</p>
+
+
+	</body>
+	
+</html>
